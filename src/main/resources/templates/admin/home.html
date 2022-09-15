@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>自适应架构设计管理界面</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/logout}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">退出登录
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${userName}"></span>
+            </div>
+            <div class="panel-body">
+                <h2 class="admin-message-text text-center" width="400" height="400">ATS架构自适应设计系统</h2>
+                <p height="100" align="center">
+                    -----------------------------------------
+                </p>
+                <form th:action="@{/admin/declareKG}" method="get">
+                    <button class="btn btn-lg btn-primary btn-block"  type="Submit"
+                        th:text="定义新的实体集"></button>
+                </form>
+<!--                    <form action="https://service.tib.eu/webvowl/" method="get">-->
+<!--                        <button class="btn btn-lg btn-primary btn-block"  type="Submit"-->
+<!--                                th:text="定义新的实体集"></button>-->
+<!--                    </form>-->
+                <p height="100" align="center">
+                    ---
+                </p>
+                <form th:action="@{/admin/uploadGenerationSelect}" method="get">
+                    <button class="btn btn-lg btn-primary btn-block" type="Submit"
+                            th:text="上传实体集到服务器"></button>
+                </form>
+                <p height="100" align="center">
+                    ---
+                </p>
+                <form th:action="@{/admin/generationSelect}" method="get">
+                    <button class="btn btn-lg btn-primary btn-block" type="Submit"
+                            th:text="设计架构"></button>
+                </form>
+                <p height="100" align="center">
+                    ---
+                </p>
+            </div>
+            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

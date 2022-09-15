@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>代基选取</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style> {text-align: center;} table {margin: auto;}</style>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/admin/home}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">返回主页
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <h2 class="admin-message-text text-center" width="400" height="400">选取代基</h2>
+                <p height="100" align="center">
+                    -----------------------------------------
+                </p>
+                <table >
+                    <tr th:each="g, State : ${session.generations}">
+                        <td  width="200px" height="70px" th:text="${g}"></td>
+                        <td><form th:action="@{/admin/requirementDeclare}" method="get">
+                            <button class="btn btn-lg btn-primary btn-block"  type="Submit" name="generation" th:value="${g}"
+                                    th:text="选取"></button>
+                        </form></td>
+                    </tr>
+                </table>
+            </div>
+            <p class="admin-message-text text-center" copyright></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

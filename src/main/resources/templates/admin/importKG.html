@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>导入实体集</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style> {text-align: center;} table {margin: auto;}</style>
+<body>
+
+<h1 class="admin-message-text text-center" th:utext="${currentGeneration}"></h1>
+<div style="text-align:center;">
+    <form method="POST" action="/admin/importKG" enctype="multipart/form-data" align="center">
+        <br/><br/>
+        <table>
+            <tr>
+                <td>
+                    <input type="file" name="file" /><br/><br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="panel-group" style="margin-top:40px">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <h2 class="admin-message-text text-center" width="400" height="400">当前已定义的需求</h2>
+            <p height="100" align="center">
+                -----------------------------------------
+            </p>
+            <table >
+                <tr th:each="g, State : ${session.requirementsInGeneration}">
+                    <td  width="200px" height="70px" th:text="${g}"></td>
+                </tr>
+            </table>
+        </div>
+        <p class="admin-message-text text-center" copyright></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>需求定义</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style> {text-align: center;} table {margin: auto;}</style>
+
+<body>
+<div class="container">
+
+    <form th:action="@{/admin/home}" method="get">
+        <button class="btn btn-md btn-danger btn-block" name="registration"
+                type="Submit">返回主页
+        </button>
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <h2 class="admin-message-text text-center" width="400" height="400">选取架构设计的需求</h2>
+                <p height="100" align="center">
+                    -----------------------------------------
+                </p>
+                <form name="input" th:action="@{/admin/viewArchitecture}">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="requirements" th:each="g,State : ${session.requirements}"width="200px" height="70px" th:value="${g}"th:text="${g}">
+                            </td>
+                        </tr>
+                    </table>
+                         <br/>
+                    </p>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Submit">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+            <p class="admin-message-text text-center" copyright></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
